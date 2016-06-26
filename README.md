@@ -1,1 +1,2 @@
-# LeetCodeExercise that I practice and post on my blog.
+# LeetCodeExercise 
+Leetcode question that I practice and post in my blog.
