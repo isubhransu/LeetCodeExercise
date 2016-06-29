@@ -11,9 +11,10 @@ package LeetCode_Medium;
  * Your algorithm should run in linear runtime complexity. Could you implement it using only
  * constant space complexity?
  *
- * Solution:
+ * Solution: Bitwise Manupilation
  * Complexity:
  */
 public class SingleNumber3 {
+//TODO
 
 }
