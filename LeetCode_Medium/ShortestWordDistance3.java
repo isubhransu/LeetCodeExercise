@@ -24,7 +24,10 @@ import java.util.HashSet;
  *
  * Complexity: TC -> O(n), SC -> O(1);
  */
+
+
 public class ShortestWordDistance3 {
+
     public static void main(String args[]){
         String[] arr = {"practice", "makes", "perfect", "coding", "makes"};
         System.out.println(getDistance(arr, "makes", "makes"));
