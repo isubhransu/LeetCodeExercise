@@ -1,5 +1,7 @@
 package LeetCode_Medium;
 
+import AbstractClass_Challenge.Main;
+
 /**
  * Created by subhransumishra on 6/29/16.
  *
@@ -51,10 +53,68 @@ package LeetCode_Medium;
 
  Could you do better than O(n2) per move() operation?
 
- * Solution:
+ * Solution: You have to be little creative to think for a solution to this problem. You need 2 1D arrays
+ * one for colum and another for row and return 0 until one hit the length of row/col size. I have
+ * explained it in detail in comments.
+ * (Explanation: https://leetcode.com/discuss/101144/java-o-1-solution-easy-to-understand)
+ *
  * Complexity:
  */
 
 public class TicTacToe{
 //TODO
+    public static void main(String[] args){
+        TicTacToeHelper ttt = new TicTacToeHelper(3);
+        System.out.println(ttt.move(1, 2, -1));
+        System.out.println(ttt.move(0, 1, 1));
+        System.out.println(ttt.move(1, 1, -1));
+        System.out.println(ttt.move(0, 2, 1));
+        System.out.println(ttt.move(1, 0, -1));
+    }
+}
+
+class TicTacToeHelper{
+    int[] rows;
+    int[] cols;
+    int Diagonal;
+    int XDiagonal;
+
+    TicTacToeHelper(int n){
+       rows = new int[n];
+       cols = new int[n];
+    }
+
+    public int move(int row, int col, int player){
+        int addPlayer = player == 1 ? 1 : -1;
+
+        //Update index of row by adding player
+        rows[row] += addPlayer;
+
+        //Update index of col by adding player
+        cols[col] += addPlayer;
+
+        //Update diagonal by adding player
+        if(row == col){
+            Diagonal+=addPlayer;
+        }
+
+        //Update anti-diagonal by adding player
+        if(col == rows.length - 1 - row){
+            XDiagonal += addPlayer;
+        }
+
+        int size = rows.length;
+
+        //Return current player if you have "size" number of current
+        // player across diagonal or anti-diagonal or across a colom
+        // or across a row.
+
+        if(Math.abs(Diagonal) == size ||
+                Math.abs(XDiagonal) == size ||
+                Math.abs(rows[row]) == size ||
+                Math.abs(cols[col]) == size){
+            return addPlayer;
+        }
+        return 0;
+    }
 }
