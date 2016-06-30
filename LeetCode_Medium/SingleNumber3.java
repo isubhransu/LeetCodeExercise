@@ -1,5 +1,8 @@
 package LeetCode_Medium;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by subhransumishra on 6/28/16.
  *
@@ -15,6 +18,28 @@ package LeetCode_Medium;
  * Complexity:
  */
 public class SingleNumber3 {
-//TODO
+    //TODO
+    public static void main(String[] args){
+        int[] arr = {1, 2, 1, 3, 2, 5};
+        System.out.println(Arrays.toString(getTwoNum(arr)));
+    }
 
+    private static int[] getTwoNum(int[] arr){
+        int AXORB = 0;
+        int A= 0;
+        int B=0;
+        for(int i=0; i< arr.length; i++){
+            AXORB ^= arr[i];
+        }
+
+        AXORB = (AXORB & (AXORB - 1)) ^ AXORB;
+
+        for(int i = 0; i<arr.length; i++){
+            if((AXORB & arr[i]) == 0)
+                A ^= arr[i];
+            else
+                B ^= arr[i];
+        }
+        return new int[]{A, B};
+   }
 }
