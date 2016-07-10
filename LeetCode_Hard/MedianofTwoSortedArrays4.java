@@ -20,6 +20,8 @@ package LeetCode_Hard;
  * Complexity:
  */
 public class MedianofTwoSortedArrays4{
+    //TODO Understand the solution:
+
     public static void main(String[] args){
         int[] ar1 = {1, 12, 15, 26, 38};
         int[] ar2 = {2, 13, 17, 30, 45};
