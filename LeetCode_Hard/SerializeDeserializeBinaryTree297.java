@@ -23,7 +23,7 @@ import java.util.Queue;
  4   5
  as "[1,2,3,null,null,4,5]"
 
- * Solution:
+ * Solution: We can serialize the data with preorder traversal.
  * Complexity:
  */
 
@@ -38,6 +38,9 @@ class Node{
     }
 }
 public class SerializeDeserializeBinaryTree297 {
+    static String serialize = "";
+    static Node node ;
+    static int i=0;
     public static void main(String[] args){
         Node root = new Node(5);
         Node node1 = new Node(3);
@@ -61,64 +64,38 @@ public class SerializeDeserializeBinaryTree297 {
          *   1  2 6  9
          */
 
-        String serialized = serializeBinaryTree(root);
-        //System.out.print(serialized);
-        deserializeBinaryTree(serialized);
+        serializeBinaryTree(root);
+        System.out.print(serialize);
+        deserializeBinaryTree(node, serialize);
     }
 
-    private static String serializeBinaryTree(Node node){
-        Queue<Node> NodeQueue1 = new LinkedList<>();
-        Queue<Node> NodeQueue2 = new LinkedList<>();
-        String S="";
-
-        NodeQueue1.offer(node);
-
-        while(!NodeQueue1.isEmpty() || !NodeQueue2.isEmpty()){
-            while(!NodeQueue1.isEmpty()){
-                Node tempnode = NodeQueue1.poll();
-                S += tempnode.val+",";
-
-                if(tempnode.left != null){
-                    NodeQueue2.offer(tempnode.left );
-                }else{
-                    S += "null,";
-                }
-
-                if(tempnode.right != null){
-                    NodeQueue2.offer(tempnode.right);
-                }else{
-                    S += "null,";
-                }
-            }
-
-            while(!NodeQueue2.isEmpty()){
-                Node tempnode = NodeQueue2.poll();
-                S += tempnode.val+",";
-
-                if(tempnode.left != null){
-                    NodeQueue1.offer(tempnode.left );
-                }else{
-                    S += "null,";
-                }
-
-                if(tempnode.right != null){
-                    NodeQueue1.offer(tempnode.right);
-                }else{
-                    S += "null,";
-                }
-            }
+    private static void serializeBinaryTree(Node node){
+        if(node == null){
+            serialize += "-1";
+            return ;
         }
-        return S;
+
+        serialize += node.val;
+        serializeBinaryTree(node.left);
+        serializeBinaryTree(node.right);
     }
 
-    private static void deserializeBinaryTree(String S){
-        String[] nodearray = S.split(",");
-        System.out.print(Arrays.toString(nodearray));
-        int nodeval = Integer.valueOf(nodearray[0]);
-        Node node = new Node(nodeval);
-
-        for(int i=1; i<nodearray.length; i++){
-
+    private static void deserializeBinaryTree(Node node, String S){
+        if(i == S.length()-1){
+            return;
         }
+        Integer num = Integer.valueOf(S.charAt(i));
+        if(num == -1){
+            i++;
+            return;
+        }
+
+        node = new Node(num);
+        i++;
+
+        deserializeBinaryTree(node.left, S);
+        deserializeBinaryTree(node.right, S);
     }
+
+
 }
