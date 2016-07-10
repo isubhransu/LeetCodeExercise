@@ -30,6 +30,10 @@ public class LRUCacheMain{
         CachePage page5 = new CachePage();
         CachePage page6 = new CachePage();
         CachePage page7 = new CachePage();
+        CachePage page8 = new CachePage();
+        CachePage page9 = new CachePage();
+        CachePage page10 = new CachePage();
+        CachePage page11 = new CachePage();
 
         lru.set(page1, 12);
         lru.set(page2, 14);
@@ -37,6 +41,13 @@ public class LRUCacheMain{
         lru.set(page4, 96);
         lru.set(page5, 75);
         lru.get(page3);
+        lru.set(page6, 45);
+        lru.set(page7, 85);
+        lru.set(page8, 25);
+        lru.set(page9, 95);
+        lru.set(page10, 66);
+        lru.set(page11, 53);
+        lru.get(page8);
     }
 }
 
@@ -65,6 +76,7 @@ class LRUCache {
         } else {
             CacheQueueNode tempnode = LRUmap.get(page);
             Cache.update(tempnode);
+            System.out.print("HEAD ->"+Cache.head.val+"& TALE -> "+Cache.tail.val);
             return LRUmap.get(page).val;
         }
     }
