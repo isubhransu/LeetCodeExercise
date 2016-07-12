@@ -1,7 +1,4 @@
 package LeetCode_Medium;
-
-import AbstractClass_Challenge.Node;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -44,8 +41,6 @@ class BinaryTreeNode{
         this.val = val;
     }
 }
-
-
 
 public class HouseRobber3 {
     public static void main(String[] args){
