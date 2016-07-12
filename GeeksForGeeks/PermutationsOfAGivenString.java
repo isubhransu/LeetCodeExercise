@@ -8,6 +8,8 @@ package GeeksForGeeks;
  * Complexity:
  */
 public class PermutationsOfAGivenString {
+
+    //TODO: Fix Bug
     public static void main(String[] args){
         String str = "abc";
         char[] arr = str.toCharArray();
@@ -19,6 +21,7 @@ public class PermutationsOfAGivenString {
         if(start == end){
             return;
         }
+
 
         for(int i=1; i<=end; i++){
             char temp = arr[i]; arr[i] = arr[i+start]; arr[i+start] = temp;
